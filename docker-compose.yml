@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  # 1. FalkorDB Graph Database
+  falkordb:
+    image: falkordb/falkordb:edge
+    container_name: falkordb
+    ports:
+      - "6379:6379"
+    volumes:
+      - falkordb_data:/data
+    restart: unless-stopped
+
+  # 2. Ollama Local LLM Runner
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    # Uncomment the deploy block below if the target machine has an NVIDIA GPU
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # 2b. llama.cpp Server (Optional local GGUF runner)
+  # llama-cpp:
+  #   image: ghcr.io/ggerganov/llama.cpp:server
+  #   container_name: llama_cpp
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./models:/models
+  #   # Replace 'your-model-file.gguf' with the filename of your model placed inside the ./models/ directory
+  #   command: "-m /models/your-model-file.gguf -c 4096 --host 0.0.0.0 --port 8080"
+  #   restart: unless-stopped
+  #   # Uncomment the deploy block below if the target machine has an NVIDIA GPU
+  #   # deploy:
+  #   #   resources:
+  #   #     reservations:
+  #   #       devices:
+  #   #         - driver: nvidia
+  #   #           count: all
+  #   #           capabilities: [gpu]
+
+  # 3. GraphRAG Agent (FastAPI / ADK Web Interface)
+  agent:
+    build:
+      context: ./graphrag_agent
+      dockerfile: Dockerfile
+    container_name: graphrag_agent
+    ports:
+      - "8000:8080"
+    environment:
+      - OLLAMA_API_BASE=http://ollama:11434
+      - FALKORDB_HOST=falkordb
+      - FALKORDB_PORT=6379
+      - SESSION_SERVICE_URI=sqlite:////code/.adk/session.db
+      - GOOGLE_GENAI_USE_VERTEXAI=False
+      - GOOGLE_CLOUD_PROJECT=local-project
+      - OTEL_TO_CLOUD=False
+    volumes:
+      - agent_adk:/code/.adk
+    depends_on:
+      - falkordb
+      - ollama
+    restart: unless-stopped
+
+volumes:
+  falkordb_data:
+  ollama_data:
+  agent_adk:
