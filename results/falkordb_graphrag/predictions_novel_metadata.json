@@ -1,0 +1,11 @@
+{
+  "subset": "novel",
+  "chunk_size": 1200,
+  "chunk_overlap": 100,
+  "ingest_time_sec": 148.33,
+  "finalize_time_sec": 0.22,
+  "total_indexing_time_sec": 148.55,
+  "total_query_time_sec": 143.74,
+  "average_query_time_sec": 143.744,
+  "num_questions": 1
+}

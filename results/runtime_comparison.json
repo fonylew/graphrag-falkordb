@@ -1,0 +1,47 @@
+{
+  "dataset": "medical",
+  "sample_size": "1 document (truncated to 10k chars), 1 question",
+  "hardware": "macOS (Apple Silicon, local LM Studio vs local Ollama)",
+  "frameworks": {
+    "falkordb_graphrag_ollama": {
+      "indexing_time_sec": 602.47,
+      "query_time_sec": 21.66,
+      "total_time_sec": 624.13,
+      "status": "success",
+      "concurrency": "default",
+      "notes": "Completed cleanly. Slow ingestion due to CPU-only Ollama loading state swap."
+    },
+    "falkordb_graphrag_lm_studio": {
+      "indexing_time_sec": 162.99,
+      "query_time_sec": 146.98,
+      "total_time_sec": 309.97,
+      "status": "success_indexing_only",
+      "concurrency": "default",
+      "notes": "Indexing completed 3.7x faster (162.99s). Query hit LM Studio's default context window limit (OpenAI 400 bad request), triggering retries."
+    },
+    "lightrag": {
+      "indexing_time_sec": 157.0,
+      "query_time_sec": 480.0,
+      "total_time_sec": 637.0,
+      "status": "query_timeout_warning",
+      "concurrency": "max_async=4",
+      "notes": "Indexed successfully in ~2.5 mins, but query keyword extraction timed out after 8 minutes on Ollama, saving empty context."
+    },
+    "fast_graphrag": {
+      "indexing_time_sec": null,
+      "query_time_sec": null,
+      "total_time_sec": 8208.0,
+      "status": "failed_timeouts",
+      "concurrency": "CONCURRENT_TASK_LIMIT=1 (sequential)",
+      "notes": "Ran for 2h 16m due to tenacity retries on timed-out requests. Deep-nested instructor prompts timed out on local Ollama (>180s per chunk)."
+    },
+    "vanilla_vector_rag_lm_studio": {
+      "indexing_time_sec": 0.19,
+      "query_time_sec": 7.88,
+      "total_time_sec": 8.07,
+      "status": "success",
+      "concurrency": "sequential",
+      "notes": "Bypasses graph indexing completely. Performs fast chunk embeddings and a single direct LLM call on LM Studio."
+    }
+  }
+}

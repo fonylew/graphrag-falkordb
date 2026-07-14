@@ -1,0 +1,11 @@
+{
+  "subset": "medical",
+  "chunk_size": 1200,
+  "chunk_overlap": 100,
+  "ingest_time_sec": 162.85,
+  "finalize_time_sec": 0.14,
+  "total_indexing_time_sec": 162.99,
+  "total_query_time_sec": 146.98,
+  "average_query_time_sec": 146.977,
+  "num_questions": 1
+}

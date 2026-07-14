@@ -1,0 +1,31 @@
+{
+  "dataset": "novel",
+  "sample_size": "1 document (truncated to 10k chars), 1 question",
+  "hardware": "macOS (Apple Silicon, local LM Studio vs local Ollama)",
+  "frameworks": {
+    "falkordb_graphrag_ollama": {
+      "indexing_time_sec": 514.70,
+      "query_time_sec": 10.71,
+      "total_time_sec": 525.41,
+      "status": "success",
+      "concurrency": "default",
+      "notes": "Completed cleanly. Slow ingestion due to CPU-only Ollama loading state swap."
+    },
+    "falkordb_graphrag_lm_studio": {
+      "indexing_time_sec": 148.55,
+      "query_time_sec": 143.74,
+      "total_time_sec": 292.29,
+      "status": "success_indexing_only",
+      "concurrency": "default",
+      "notes": "Indexing completed 3.5x faster (148.55s). Query hit LM Studio's default context window limit (OpenAI 400 bad request), triggering retries."
+    },
+    "lightrag": {
+      "indexing_time_sec": null,
+      "query_time_sec": 480.0,
+      "total_time_sec": 960.0,
+      "status": "failed_timeouts",
+      "concurrency": "max_async=4",
+      "notes": "Failed due to 480-second LLM timeouts during both the entity extraction and query keyword extraction phases."
+    }
+  }
+}
