@@ -1,0 +1,5 @@
+mode,trial,batch_size,files_in_batch,cumulative_files,llm_model,embed_model,ingest_duration_sec,finalize_duration_sec,total_duration_sec,avg_sec_per_file,nodes_created,relationships_created,chunk_count,entity_count,relationship_count,cpu_util_percent,ram_used_gb,gpu_util_percent,vram_used_gb,failed_files,status,error_message
+isolated,1,1,1,1,ollama/gemma3:latest,ollama/nomic-embed-text:latest,1266.656,20.082,1286.738,1266.656,354,710,40,354,272,6.8,30.82,0.0,0.0,0,SUCCESS,
+isolated,1,3,3,3,ollama/gemma3:latest,ollama/nomic-embed-text:latest,4458.929,45.071,4503.999,1486.31,705,1463,123,701,590,6.8,31.37,0.0,0.0,1,SUCCESS,
+isolated,1,5,5,5,ollama/gemma3:latest,ollama/nomic-embed-text:latest,6399.931,139.071,6539.002,1279.986,1244,2646,184,1224,1035,6.7,30.97,0.0,0.0,1,SUCCESS,
+isolated,1,10,10,10,ollama/gemma3:latest,ollama/nomic-embed-text:latest,10528.418,399.036,10927.454,1052.842,2471,4980,302,2401,1866,6.6,25.05,0.0,0.0,1,SUCCESS,

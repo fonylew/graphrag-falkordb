@@ -1,0 +1,1 @@
+mode,trial,batch_size,file_index,file_path,page_count,llm_model,embed_model,ingest_duration_sec,nodes_created,relationships_created,chunks_indexed,status,error_message

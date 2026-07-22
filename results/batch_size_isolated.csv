@@ -1,0 +1,5 @@
+mode,trial,batch_size,files_in_batch,cumulative_files,llm_model,embed_model,ingest_duration_sec,finalize_duration_sec,total_duration_sec,avg_sec_per_file,nodes_created,relationships_created,chunk_count,entity_count,relationship_count,cpu_util_percent,ram_used_gb,gpu_util_percent,vram_used_gb,failed_files,status,error_message
+isolated,1,1,1,1,ollama/gemma3:latest,ollama/nomic-embed-text:latest,1242.392,20.731,1263.123,1242.392,354,710,40,354,272,6.5,26.21,0.0,0.0,0,SUCCESS,
+isolated,1,3,3,3,ollama/gemma3:latest,ollama/nomic-embed-text:latest,4425.022,47.654,4472.677,1475.007,705,1463,123,701,590,6.3,25.96,0.0,0.0,1,SUCCESS,
+isolated,1,5,5,5,ollama/gemma3:latest,ollama/nomic-embed-text:latest,7197.572,56.615,7254.187,1439.514,890,1936,184,882,763,6.0,22.1,0.0,0.0,2,SUCCESS,
+isolated,1,10,10,10,ollama/gemma3:latest,ollama/nomic-embed-text:latest,10379.966,125.269,10505.235,1037.997,2471,4980,302,2401,1866,0.0,19.85,0.0,0.0,1,SUCCESS,reconstructed after FalkorDB pod instability during finalize; per-file ingest data was already logged, finalize() re-run manually against the intact graph

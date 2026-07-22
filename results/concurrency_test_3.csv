@@ -1,0 +1,1 @@
+mode,trial,batch_size,files_in_batch,cumulative_files,llm_model,embed_model,ingest_duration_sec,finalize_duration_sec,total_duration_sec,avg_sec_per_file,nodes_created,relationships_created,chunk_count,entity_count,relationship_count,cpu_util_percent,ram_used_gb,gpu_util_percent,vram_used_gb,failed_files,status,error_message

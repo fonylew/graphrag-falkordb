@@ -1,0 +1,5 @@
+mode,trial,batch_size,files_in_batch,cumulative_files,llm_model,embed_model,ingest_duration_sec,finalize_duration_sec,total_duration_sec,avg_sec_per_file,nodes_created,relationships_created,chunk_count,entity_count,relationship_count,cpu_util_percent,ram_used_gb,gpu_util_percent,vram_used_gb,failed_files,status,error_message
+cumulative,1,1,1,1,ollama/gemma3:latest,ollama/nomic-embed-text:latest,1252.546,20.973,1273.519,1252.546,354,710,40,354,272,6.4,23.6,0.0,0.0,0,SUCCESS,
+cumulative,1,3,2,3,ollama/gemma3:latest,ollama/nomic-embed-text:latest,3180.897,25.05,3205.947,1590.449,351,753,123,701,590,6.4,22.32,0.0,0.0,1,SUCCESS,
+cumulative,1,5,2,5,ollama/gemma3:latest,ollama/nomic-embed-text:latest,1883.37,79.143,1962.513,941.685,539,1183,184,1224,1035,6.3,22.04,0.0,0.0,0,SUCCESS,
+cumulative,1,10,5,10,ollama/gemma3:latest,ollama/nomic-embed-text:latest,4028.407,93.597,4122.004,805.681,1227,2334,302,2401,1866,0.0,19.85,0.0,0.0,0,SUCCESS,reconstructed after FalkorDB port-forward outage during finalize; per-file ingest data was already logged, finalize() re-run manually against the intact graph

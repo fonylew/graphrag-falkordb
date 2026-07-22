@@ -1,0 +1,3 @@
+mode,trial,batch_size,file_index,file_path,page_count,llm_model,embed_model,ingest_duration_sec,nodes_created,relationships_created,chunks_indexed,status,error_message
+isolated,1,20,1,/Users/aimet/Zotero/Zotero/storage/M3CPJE8A/Lei et al. - 2025 - D-SMART Enhancing LLM Dialogue Consistency via Dynamic Structured Memory And Reasoning Tree.pdf,25,ollama/gemma3:latest,ollama/nomic-embed-text:latest,1224.089,354,710,40,SUCCESS,
+isolated,1,20,2,/Users/aimet/Zotero/Zotero/storage/U7G8IEMX/He et al. - 2024 - What Matters in Transformers Not All Attention is.pdf,20,ollama/gemma3:latest,ollama/nomic-embed-text:latest,1800.005,0,0,0,TIMEOUT,Exceeded file_timeout_sec=1800.0
